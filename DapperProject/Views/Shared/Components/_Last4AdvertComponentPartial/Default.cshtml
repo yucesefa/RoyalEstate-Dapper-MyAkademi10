@@ -1,0 +1,59 @@
+﻿@model List<DapperProject.Dtos.AdvertDtos.Last4AdvertDto> 
+<section class="ftco-section bg-light">
+    	<div class="container">
+				<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">En Yeniler</span>
+            <h2 class="mb-4">Son 4 İlan</h2>
+          </div>
+        </div>    		
+    	</div>
+    	<div class="container-fluid">
+    		<div class="row">
+            @{
+                string type = "";
+            }
+            @foreach (var item in Model)
+            {
+                if(item.AdvertStatus=true)
+                {
+                    type = "Satılık";
+                }
+                else
+                {
+                    type = "Kiralık";
+                }
+                <div class="col-sm col-md-6 col-lg ftco-animate">
+                    <div class="properties">
+                        <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(@item.ImageUrl);">
+                            <div class="icon d-flex justify-content-center align-items-center">
+                                <span class="icon-search2"></span>
+                            </div>
+                        </a>
+                        <div class="text p-3">
+                            <span class="status sale">@type</span>
+                            <div class="d-flex">
+                                <div class="one">
+                                    <h3><a href="#">@item.LocationName</a></h3>
+                                    <p>@item.AdvertType</p>
+                                </div>
+                                <div class="two">
+                                    <span class="price">$@item.Price</span>
+                                </div>
+                            </div>
+                            <p>@item.Description</p>
+                            <hr>
+                            <p class="bottom-area d-flex">
+                                <span><i class="flaticon-selection"></i>@item.M2 m2</span>
+                                <span class="ml-auto"><i class="flaticon-bathtub"></i> @item.BathroomCount</span>
+                                <span><i class="flaticon-bed"></i> @item.RoomCount</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+    			
+    		
+    		</div>
+    	</div>
+    </section>

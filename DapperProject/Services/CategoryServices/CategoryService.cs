@@ -2,7 +2,7 @@
 using DapperProject.Context;
 using DapperProject.Dtos.CategoryDtos;
 
-namespace DapperProject.Services
+namespace DapperProject.Services.CategoryServices
 {
     public class CategoryService : ICategoryService
     {

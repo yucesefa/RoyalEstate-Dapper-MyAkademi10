@@ -4,5 +4,8 @@
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
-<h1>Index</h1>
+@await Component.InvokeAsync("_OtherFeatureComponentPartial")
 
+@await Component.InvokeAsync("_RecentPropertiesComponentPartial")
+
+@await Component.InvokeAsync("_Last4AdvertComponentPartial")

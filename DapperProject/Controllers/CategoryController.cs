@@ -1,5 +1,5 @@
 ﻿using DapperProject.Dtos.CategoryDtos;
-using DapperProject.Services;
+using DapperProject.Services.CategoryServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DapperProject.Controllers

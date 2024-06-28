@@ -1,13 +1,19 @@
 using DapperProject.Context;
 using DapperProject.Services;
+using DapperProject.Services.AdvertServices;
+using DapperProject.Services.CategoryServices;
+using DapperProject.Services.SliderServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddScoped<DapperContext>();
+
 builder.Services.AddScoped<ICategoryService,CategoryService>();
 builder.Services.AddScoped<IProductService,ProductService>();
+builder.Services.AddScoped<ISliderService, SliderService>();
+builder.Services.AddScoped<IAdvertService, AdvertService>();
 
 builder.Services.AddControllersWithViews();
 

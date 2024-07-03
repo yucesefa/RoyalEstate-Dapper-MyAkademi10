@@ -1,0 +1,64 @@
+﻿@model List<DapperProject.Dtos.AgentDtos.ResultAgentDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+@await Component.InvokeAsync("_HeadComponentPartial")
+@await Component.InvokeAsync("_TopbarComponentPartial")
+@await Component.InvokeAsync("_NavbarComponentPartial")
+<div class="hero-wrap" style="background-image: url('/royalestate-master/images/bg_1.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="/Default/Index/">Ana Sayfa</a></span> <span>Temsilciler</span></p>
+                <h1 class="mb-3 bread">Temsilciler</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="staff">
+                        <div class="img" style="background-image: url(@item.ImageUrl);"></div>
+                        <div class="text pt-4">
+                            <h3><a href="#">@item.AgentName @item.AgentSurname</a></h3>
+                            <p>@item.Description</p>
+                            <ul class="ftco-social d-flex">
+                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+           
+        </div>
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li><a href="#">&lt;</a></li>
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@await Component.InvokeAsync("_FooterComponentPartial")
+
+@await Component.InvokeAsync("_ScriptComponentPartial")

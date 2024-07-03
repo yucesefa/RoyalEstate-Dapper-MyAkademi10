@@ -1,20 +1,18 @@
-﻿@model List<DapperProject.Dtos.AdvertDtos.Last4AdvertDto> 
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<DapperProject.Dtos.AdvertDtos.ResultAdvertDto>
+@{
+    ViewData["Title"] = "AdvertList";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+
 <section class="ftco-section bg-light">
-    	<div class="container">
-				<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-          	<span class="subheading">En Yeniler</span>
-            <h2 class="mb-4">Son 4 İlan</h2>
-          </div>
-        </div>    		
-    	</div>
-    	<div class="container-fluid">
-    		<div class="row">
-            @{
-                string type = "";
-            }
+    <div class="container">
+        <div class="row">
             @foreach (var item in Model)
             {
+                string type = "";
                 if(item.AdvertStatus=true)
                 {
                     type = "Satılık";
@@ -23,7 +21,7 @@
                 {
                     type = "Kiralık";
                 }
-                <div class="col-sm col-md-6 col-lg ftco-animate">
+                <div class="col-md-4 ftco-animate">
                     <div class="properties">
                         <a href="/AdvertDetails/Index/@item.AdvertId" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(@item.ImageUrl1);">
                             <div class="icon d-flex justify-content-center align-items-center">
@@ -34,7 +32,7 @@
                             <span class="status sale">@type</span>
                             <div class="d-flex">
                                 <div class="one">
-                                    <h3><a href="#">@item.Title</a></h3>
+                                    <h3><a href="property-single.html">@item.Title</a></h3>
                                     <p>@item.CategoryName</p>
                                     <p>@item.LocationName</p>
                                 </div>
@@ -45,7 +43,7 @@
                             <p>@item.Description</p>
                             <hr>
                             <p class="bottom-area d-flex">
-                                <span><i class="flaticon-selection"></i>@item.M2 m2</span>
+                                <span><i class="flaticon-selection"></i> @item.M2 m2</span>
                                 <span class="ml-auto"><i class="flaticon-bathtub"></i> @item.BathroomCount</span>
                                 <span><i class="flaticon-bed"></i> @item.RoomCount</span>
                             </p>
@@ -53,8 +51,17 @@
                     </div>
                 </div>
             }
-    			
-    		
-    		</div>
-    	</div>
-    </section>
+          
+           
+        </div>
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li>@Html.PagedListPager((IPagedList)Model,page=>Url.Action("AdvertList",new{page}))</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

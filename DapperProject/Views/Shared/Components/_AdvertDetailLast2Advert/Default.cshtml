@@ -1,0 +1,46 @@
+﻿@model List<DapperProject.Dtos.AdvertDtos.Last2AdvertDto>
+<div class="col-md-12 properties-single ftco-animate mb-5 mt-5">
+    <h4 class="mb-4">Son 2 İlan</h4>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            string type = "";
+            if(item.AdvertStatus=true)
+            {
+                type = "Satılık";
+            }
+            else
+            {
+                type = "Kiralık";
+            }
+            <div class="col-md-6 ftco-animate">
+                <div class="properties">
+                    <a href="property-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(@item.ImageUrl1);">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                            <span class="icon-search2"></span>
+                        </div>
+                    </a>
+                    <div class="text p-3">
+                        <span class="status sale">@type</span>
+                        <div class="d-flex">
+                            <div class="one">
+                                <h3><a href="property-single.html">@item.LocationName</a></h3>
+                                <p>@item.CategoryName</p>
+                            </div>
+                            <div class="two">
+                                <span class="price">$@item.Price</span>
+                            </div>
+                        </div>
+                        <p>@item.Description</p>
+                        <hr>
+                        <p class="bottom-area d-flex">
+                            <span><i class="flaticon-selection"></i> @item.M2 m2</span>
+                            <span class="ml-auto"><i class="flaticon-bathtub"></i> @item.BathroomCount</span>
+                            <span><i class="flaticon-bed"></i> @item.RoomCount</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        } 
+    </div>
+</div>

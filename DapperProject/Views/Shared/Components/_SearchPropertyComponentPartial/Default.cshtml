@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12 search-wrap">
                 <h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span> Filtrele</h2>
-                <form asp-area="" asp-controller="Advert" asp-action="AdvertList" class="search-property">
+                <form asp-area="" asp-controller="Advert" asp-action="GetListSearchAdvertList" class="search-property">
                     <div class="row">
                         <div class="col-md align-items-end">
                             <div class="form-group">
@@ -35,6 +35,23 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md align-items-end">
+                            <div class="form-group">
+                                <label for="#">Kategori</label>
+                                <div class="form-field">
+                                    <div class="select-wrap">
+                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                        <select name="category" id="" class="form-control">
+                                            <option value="">Kategori Seçiniz</option>
+                                            @foreach (var category in categories)
+                                            {
+                                                <option value="@category.CategoryId" style="color:black">@category.CategoryName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -50,8 +67,6 @@
                                             {
                                                 <option value="@item" style="color:black">$@item.ToString().Insert(3, ".")</option>
                                             }
-
-
                                         </select>
                                     </div>
                                 </div>

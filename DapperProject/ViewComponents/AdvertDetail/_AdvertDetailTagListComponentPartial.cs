@@ -12,7 +12,7 @@ namespace DapperProject.ViewComponents.AdvertDetail
             _tagService = tagService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(int tag)
         {
             var values = await _tagService.GetAllTagAsync();
             return View(values);

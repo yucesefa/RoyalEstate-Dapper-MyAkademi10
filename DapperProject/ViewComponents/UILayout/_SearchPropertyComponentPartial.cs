@@ -46,7 +46,7 @@ namespace DapperProject.ViewComponents.UILayout
 				maxPrices.Add(maxPrice);
 			}
 
-			ViewBag.minPrice = minPrices;
+            ViewBag.minPrice = minPrices;
 			ViewBag.maxPrice = maxPrices;
 			ViewData["Categories"] = categories.ToList();
 

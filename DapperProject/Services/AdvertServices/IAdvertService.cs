@@ -15,7 +15,6 @@ namespace DapperProject.Services.AdvertServices
         Task<GetByIdAdvertDto> GetByIdAdvertAsync(int id);
         Task<List<ResultAdvertDto>> GetResultAdvertAsync();
         Task<List<ResultSliderDto>> GetResultSliderAdvertAsync();
-        Task<List<ResultAdvertDto>> GetListSearchAdvertAsync(string word,int location,float minPrice,float maxPrice);
-
+        Task<List<GetListSearchAdvertDto>> GetListSearchAdvertAsync(string word,int location,float minPrice,float maxPrice,int category);
     }
 }

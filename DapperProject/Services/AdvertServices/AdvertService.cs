@@ -64,27 +64,27 @@ namespace DapperProject.Services.AdvertServices
             return values.ToList();
         }
 
-        public async Task<List<ResultAdvertDto>> GetListSearchAdvertAsync(string word, int location, float minPrice, float maxPrice)
+        public async Task<List<GetListSearchAdvertDto>> GetListSearchAdvertAsync(string word, int location, float minPrice, float maxPrice,int category)
         {
             string query = "";
             if (location > 0 )
             {
-                query = "select AdvertId,ImageUrl1,Title,LocationName,Description,CategoryName,AdvertStatus,RoomCount,BathroomCount,Price,M2,VideoEmbed from TblAdvert\r\ninner join TblImage on\r\nTblAdvert.ImageId=TblImage.ImageId\r\ninner join TblLocation on\r\nTblAdvert.LocationId=TblLocation.LocationId\r\ninner join TblCategory on\r\nTblAdvert.CategoryId=TblCategory.CategoryId\r\nwhere Title Like '%' + @word +'%'  and (TblAdvert.LocationId =@location and (Price >= @minPrice and Price <=@maxPrice))";
+                query = "SELECT \r\n    AdvertId,\r\n    ImageUrl1,\r\n    Title,\r\n    LocationName,\r\n    Description,\r\n    CategoryName,\r\n    AdvertStatus,\r\n    RoomCount,\r\n    BathroomCount,\r\n    Price,\r\n    M2,\r\n    VideoEmbed \r\nFROM \r\n    TblAdvert\r\nINNER JOIN \r\n    TblImage ON TblAdvert.ImageId = TblImage.ImageId\r\nINNER JOIN \r\n    TblLocation ON TblAdvert.LocationId = TblLocation.LocationId\r\nINNER JOIN \r\n    TblCategory ON TblAdvert.CategoryId = TblCategory.CategoryId\r\nWHERE \r\n    Title LIKE '%' + @word + '%' \r\n    AND TblAdvert.LocationId = @location \r\n    AND TblAdvert.CategoryId = @category \r\n    AND Price >= @minPrice \r\n    AND Price <= @maxPrice;";
             }
             else
             {
-                query = "select AdvertId,ImageUrl1,Title,LocationName,Description,CategoryName,AdvertStatus,RoomCount,BathroomCount,Price,M2,VideoEmbed from TblAdvert\r\ninner join TblImage on\r\nTblAdvert.ImageId=TblImage.ImageId\r\ninner join TblLocation on\r\nTblAdvert.LocationId=TblLocation.LocationId\r\ninner join TblCategory on\r\nTblAdvert.CategoryId=TblCategory.CategoryId\r\nwhere Title Like '%' + @word +'%'  and (Price >= @minPrice and Price <=@maxPrice)";
+                query = "select AdvertId,ImageUrl1,Title,LocationName,Description,CategoryName,AdvertStatus,RoomCount,BathroomCount,Price,M2,VideoEmbed from TblAdvert\r\ninner join TblImage on\r\nTblAdvert.ImageId=TblImage.ImageId\r\ninner join TblLocation on\r\nTblAdvert.LocationId=TblLocation.LocationId\r\ninner join TblCategory on\r\nTblAdvert.CategoryId=TblCategory.CategoryId\r\nwhere Title Like '%' + @word +'%' and (TblAdvert.CategoryId=@category)  and (Price >= @minPrice and Price <=@maxPrice)";
             }
             var parameters = new DynamicParameters();
             parameters.Add("@word", word);
             parameters.Add("@location", location);
+            parameters.Add("@category", category);
             parameters.Add("@minPrice", minPrice);
             parameters.Add("@maxPrice", maxPrice);
             var connection = _dapperContext.CreateConnection();
-            var values = await connection.QueryAsync<ResultAdvertDto>(query,parameters);
+            var values = await connection.QueryAsync<GetListSearchAdvertDto>(query,parameters);
             return values.ToList();
         }
-
         public async Task<float> GetMaxPrice()
         {
             string query = "select Top 1 Price from TblAdvert order by Price Desc";

@@ -1,5 +1,7 @@
 ﻿using DapperProject.Services.AdvertServices;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.CodeAnalysis;
 using X.PagedList;
 
 namespace DapperProject.Controllers
@@ -13,9 +15,14 @@ namespace DapperProject.Controllers
             _advertService = advertService;
         }
 
-        public async Task<IActionResult> AdvertList(string word, int location,float minPrice, float maxPrice,int page=1)
+        public async Task<IActionResult> AdvertList( int page=1)
         {
-            if (!string.IsNullOrEmpty(word) || location > 0 || minPrice > 0 || maxPrice > 0)
+            var values = await _advertService.GetResultAdvertAsync();  
+            return View(values.ToPagedList(page,6));
+        }
+        public async Task<IActionResult>GetListSearchAdvertList(string word, int location, float minPrice, int category, float maxPrice)
+        {
+            if (!string.IsNullOrEmpty(word) || location > 0 || category > 0 || minPrice > 0 || maxPrice > 0)
             {
                 if (word == null)
                 {
@@ -29,12 +36,12 @@ namespace DapperProject.Controllers
                 {
                     maxPrice = await _advertService.GetMaxPrice();
                 }
-                var valuesSearch = await _advertService.GetListSearchAdvertAsync(word, location, minPrice, maxPrice);
+                var valuesSearch = await _advertService.GetListSearchAdvertAsync(word, location, minPrice, maxPrice, category);
                 return View(valuesSearch);
             }
-            var values = await _advertService.GetResultAdvertAsync();
-            return View(values.ToPagedList(page,3));
+            //var values = await _advertService.GetResultAdvertAsync();
+            return View(/*values*/);
         }
-       
+
     }
 }

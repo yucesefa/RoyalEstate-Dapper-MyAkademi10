@@ -1,5 +1,5 @@
-﻿@using X.PagedList
-@using X.PagedList.Mvc.Core
+﻿﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
 @model IPagedList<DapperProject.Dtos.AdvertDtos.ResultAdvertDto>
 @{
     ViewData["Title"] = "AdvertList";
@@ -58,7 +58,7 @@
             <div class="col text-center">
                 <div class="block-27">
                     <ul>
-                        <li>@Html.PagedListPager((IPagedList)Model,page=>Url.Action("AdvertList",new{page}))</li>
+                        @Html.PagedListPager((IPagedList)Model, page => Url.Action("PropertyList", new { page }))
                     </ul>
                 </div>
             </div>

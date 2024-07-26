@@ -4,7 +4,6 @@ Bu projede Dapper ORM kullanılarak, ASP.NET Core MVC ve MsSQL ile bir emlak sit
 * Asp .Net Core Mvc
 * Dapper
 * MsSql
-* Db First
 * PagedList
 * Ck Editor
 # Projeye Ait Görseller

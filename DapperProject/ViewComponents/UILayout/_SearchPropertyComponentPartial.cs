@@ -9,47 +9,20 @@ namespace DapperProject.ViewComponents.UILayout
 	public class _SearchPropertyComponentPartial:ViewComponent
 	{
 		private readonly ILocationService _locationService;
-		private readonly IAdvertService _advertService;
 		private readonly ICategoryService _categoryService;
+		private readonly IAdvertService _advertService;
 
-        public _SearchPropertyComponentPartial(ILocationService locationService, IAdvertService advertService, ICategoryService categoryService)
+        public _SearchPropertyComponentPartial(ILocationService locationService, ICategoryService categoryService, IAdvertService advertService)
         {
             _locationService = locationService;
-            _advertService = advertService;
             _categoryService = categoryService;
+            _advertService = advertService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
 		{
-			var values = await _locationService.GetAllLocationsAsync();	
-			var minPrice = await _advertService.GetMinPrice();
-			var maxPrice = await _advertService.GetMaxPrice();
-			var categories = await _categoryService.GetAllCategoryAsync();
-
-
-			var fark = maxPrice - minPrice;
-			var kademe = fark / 10;
-
-			List<float> minPrices = new List<float>();
-			minPrices.Add(minPrice);
-			for (int i = 0; i < 4; i++)
-			{
-				minPrice += kademe;
-				minPrices.Add(minPrice);
-			}
-
-			List<float> maxPrices = new List<float>();
-			maxPrices.Add(maxPrice);
-			for (int i = 0; i < 4; i++)
-			{
-				maxPrice -= kademe;
-				maxPrices.Add(maxPrice);
-			}
-
-            ViewBag.minPrice = minPrices;
-			ViewBag.maxPrice = maxPrices;
-			ViewData["Categories"] = categories.ToList();
-
+			var values= await _locationService.GetAllLocationsAsync();
+			ViewBag.category = await _categoryService.GetAllCategoryAsync();
 			return View(values);
 		}
 	}

@@ -3,6 +3,7 @@ using DapperProject.Services;
 using DapperProject.Services.AdvertServices;
 using DapperProject.Services.AgentServices;
 using DapperProject.Services.CategoryServices;
+using DapperProject.Services.KaggleDatasetService;
 using DapperProject.Services.LocationServices;
 using DapperProject.Services.TagServices;
 using DapperProject.Services.TestimonialServices;
@@ -20,6 +21,7 @@ builder.Services.AddScoped<IAgentService, AgentService>();
 builder.Services.AddScoped<ILocationService, LocationService>();
 builder.Services.AddScoped<ITestimonialService, TestimonialService>();
 builder.Services.AddScoped<ITagService, TagService>();
+builder.Services.AddScoped<IDataSetService,DataSetService>();
 
 builder.Services.AddControllersWithViews();
 

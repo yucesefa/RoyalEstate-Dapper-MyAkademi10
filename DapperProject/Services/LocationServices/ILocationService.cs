@@ -6,5 +6,9 @@ namespace DapperProject.Services.LocationServices
 	{
 		Task<int> GetAllLocationCountAsync();
 		Task<List<ResultLocationDto>> GetAllLocationsAsync();
-	}
+        Task CreateLocationAsync(CreateLocationDto createLocationDto);
+        Task DeleteLocationAsync(int id);
+        Task UpdateLocationAsync(UpdateLocationDto updateLocationDto);
+        Task<GetByIdLocationDto> GetLocationAsync(int id);
+    }
 }

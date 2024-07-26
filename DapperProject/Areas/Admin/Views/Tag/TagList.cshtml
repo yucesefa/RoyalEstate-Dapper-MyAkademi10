@@ -1,0 +1,49 @@
+﻿@model List<DapperProject.Dtos.TagDtos.ResultTagDto>
+@{
+    ViewData["Title"] = "TagList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Etiket Listesi</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Etiket Adı </th>
+                            <th scope="col">Sil</th>
+                            <th scope="col">Güncelle</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>
+                                    @count
+                                </td>
+
+                                <td>
+                                    @item.TagName
+                                </td>
+                                <td><a href="/Admin/Tag/DeleteTag/@item.TagId" class="btn btn-warning">Sil</a></td>
+                                <td><a href="/Admin/Tag/UpdateTag/@item.TagId" class="btn btn-info">Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <br />
+        <td><a href="/Admin/Tag/CreateTag/" class="btn btn-primary">Yeni Etiket Girişi</a></td>
+    </div>
+</div>

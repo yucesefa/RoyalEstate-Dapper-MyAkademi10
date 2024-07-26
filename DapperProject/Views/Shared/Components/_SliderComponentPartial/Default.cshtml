@@ -1,4 +1,4 @@
-﻿@model List<DapperProject.Dtos.SliderDtos.ResultSliderDto>
+﻿@model List<DapperProject.Dtos.AdvertDtos.Last4AdvertDto>
 <section class="home-slider owl-carousel">
     @foreach (var item in Model)
     {
@@ -11,7 +11,7 @@
                         <span class="location d-block mb-3"><i class="icon-my_location"></i>@item.LocationName</span>
                         <p>@item.Description</p>
                         <span class="price">$@item.Price</span>
-                        <a href="#" class="btn-custom p-3 px-4 bg-primary">Detayları Görüntüle <span class="icon-plus ml-1"></span></a>
+                        <a href="/AdvertDetails/Index/@item.AdvertId" class="btn-custom p-3 px-4 bg-primary">Detayları Görüntüle <span class="icon-plus ml-1"></span></a>
                     </div>
                 </div>
             </div>

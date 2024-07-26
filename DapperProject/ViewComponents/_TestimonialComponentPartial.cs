@@ -14,7 +14,7 @@ namespace DapperProject.ViewComponents
 
 		public async Task<IViewComponentResult> InvokeAsync()
 		{
-			var values = await _testimonialService.GetAllTestimonialsAsync();
+			var values = await _testimonialService.GetAllTestimonialAsync();
 			return View(values);
 		}
 	}

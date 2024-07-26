@@ -2,8 +2,9 @@
 using DapperProject.Services.CategoryServices;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DapperProject.Controllers
+namespace DapperProject.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;

@@ -6,14 +6,13 @@
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
-
 <section class="ftco-section bg-light">
     <div class="container">
         <div class="row">
             @foreach (var item in Model)
             {
                 string type = "";
-                if(item.AdvertStatus=true)
+                if(item.AdvertStatus==true)
                 {
                     type = "Satılık";
                 }
@@ -32,7 +31,7 @@
                             <span class="status sale">@type</span>
                             <div class="d-flex">
                                 <div class="one">
-                                    <h3><a href="property-single.html">@item.Title</a></h3>
+                                    <h3><a href="/AdvertDetails/Index/@item.AdvertId">@item.Title</a></h3>
                                     <p>@item.CategoryName</p>
                                     <p>@item.LocationName</p>
                                 </div>
@@ -58,7 +57,7 @@
             <div class="col text-center">
                 <div class="block-27">
                     <ul>
-                        @Html.PagedListPager((IPagedList)Model, page => Url.Action("PropertyList", new { page }))
+                        @Html.PagedListPager((IPagedList)Model, page => Url.Action("AdvertList", new { page }))
                     </ul>
                 </div>
             </div>

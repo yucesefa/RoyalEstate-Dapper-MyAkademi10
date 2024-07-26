@@ -1,0 +1,70 @@
+﻿@model List<DapperProject.Dtos.AdvertDtos.ResultAdvertDto>
+@{
+    ViewData["Title"] = "AdvertList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">İlanlar Listesi</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Görsel </th>
+                            <th scope="col">Başlık </th>
+                            <th scope="col">Lokasyon </th>
+                            <th scope="col">Açıklama </th>
+                            <th scope="col">Kategori </th>
+                            <th scope="col">İlan Durumu </th>
+                            <th scope="col">Oda Sayısı </th>
+                            <th scope="col">Banyo Sayısı </th>
+                            <th scope="col">M2 </th>
+                            <th scope="col">Fiyat </th>
+                            <th scope="col">Sil</th>
+                            <th scope="col">Güncelle</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            string type = "";
+                            if(item.AdvertStatus==true)
+                            {
+                                type = "Satılık";
+                            }
+                            else
+                            {
+                                type = "Kiralık";
+                            }
+                            count++;
+                            <tr>
+                                <td>@count </td>
+                                <td><img src="@item.ImageUrl1" width="100" height="100" /></td>
+                                <td>@item.Title</td>
+                                <td>@item.LocationName</td>
+                                <td>@item.Description.Substring(0,20)</td>
+                                <td>@item.CategoryName</td>
+                                <td>@type</td>
+                                <td>@item.RoomCount</td>
+                                <td>@item.BathroomCount</td>
+                                <td>@item.M2</td>
+                                <td>@item.Price</td>
+                                <td><a href="/Admin/Advert/DeleteAdvert/@item.AdvertId" class="btn btn-warning">Sil</a></td>
+                                <td><a href="/Admin/Advert/AdvertUpdate/@item.AdvertId" class="btn btn-info">Güncelle</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <br />
+        <td><a href="/Admin/Advert/CreateAdvert/" class="btn btn-primary">Yeni İlan Girişi</a></td>
+    </div>
+</div>

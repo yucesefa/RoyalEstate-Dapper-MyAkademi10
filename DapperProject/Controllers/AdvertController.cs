@@ -20,27 +20,10 @@ namespace DapperProject.Controllers
             var values = await _advertService.GetResultAdvertAsync();  
             return View(values.ToPagedList(page,6));
         }
-        public async Task<IActionResult>GetListSearchAdvertList(string word, int location, float minPrice, int category, float maxPrice)
+        public async Task<IActionResult> GetListSearchAdvertList(int location,int category)
         {
-            if (!string.IsNullOrEmpty(word) || location > 0 || category > 0 || minPrice > 0 || maxPrice > 0)
-            {
-                if (word == null)
-                {
-                    word = "";
-                }
-                if (minPrice == 0)
-                {
-                    minPrice = await _advertService.GetMinPrice();
-                }
-                if (maxPrice == 0)
-                {
-                    maxPrice = await _advertService.GetMaxPrice();
-                }
-                var valuesSearch = await _advertService.GetListSearchAdvertAsync(word, location, minPrice, maxPrice, category);
+                var valuesSearch = await _advertService.GetListSearchAdvertAsync(location, category);
                 return View(valuesSearch);
-            }
-            //var values = await _advertService.GetResultAdvertAsync();
-            return View(/*values*/);
         }
 
     }

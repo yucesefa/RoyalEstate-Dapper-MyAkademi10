@@ -14,7 +14,7 @@ namespace DapperProject.ViewComponents.UILayout
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var values = await _advertService.GetResultSliderAdvertAsync();
+            var values = await _advertService.GetLast4AdvertAsync();
             return View(values);
         }
     }

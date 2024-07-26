@@ -1,4 +1,4 @@
-﻿@model DapperProject.Dtos.AdvertDtos.GetByIdAdvertDto
+﻿@model DapperProject.Dtos.AdvertDtos.GetByIdAdvertDetailDto
 <div class="hero-wrap" style="background-image: url('/royalestate-master/images/bg_1.jpg');">
     <div class="overlay"></div>
     <div class="container">
@@ -22,12 +22,12 @@
                             <div class="item">
                                 <div class="properties-img" style="background-image: url(@Model.ImageUrl1);"></div>
                             </div>
-                           @*  <div class="item">
-                                <div class="properties-img" style="background-image: url(/royalestate-master/images/properties-2.jpg);"></div>
+                            <div class="item">
+                                <div class="properties-img" style="background-image: url(@Model.ImageUrl2);"></div>
                             </div>
                             <div class="item">
-                                <div class="properties-img" style="background-image: url(/royalestate-master/images/properties-3.jpg);"></div>
-                            </div> *@
+                                <div class="properties-img" style="background-image: url(@Model.ImageUrl3);"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-12 Properties-single mt-4 mb-5 ftco-animate">
@@ -38,10 +38,11 @@
                         <p>@Model.Description</p>
                         <div class="d-md-flex mt-5 mb-5">
                             <ul>
-                                <li><span>Lot Area: </span>@Model.M2 m2</li>
-                                <li><span>Bed Rooms: </span> @Model.RoomCount</li>
-                                <li><span>Bath Rooms: </span> @Model.BathroomCount</li>
-                                <li><span>2 Garage: </span> 4</li>
+                                <li><span>Kategori: </span> @Model.CategoryName</li>
+                                <li><span>Metre Kare: </span>@Model.M2 m2</li>
+                                <li><span>Oda Sayısı: </span> @Model.RoomCount</li>
+                                <li><span>Banyo Sayısı: </span> @Model.BathroomCount</li>
+                                <li><span>Fiyat: </span> $@Model.Price</li>
                             </ul>
                         </div>
                         <p>@Model.Description</p>

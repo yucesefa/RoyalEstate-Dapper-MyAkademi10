@@ -1,0 +1,43 @@
+﻿@model DapperProject.Dtos.AgentDtos.GetByIdAgentDto
+@{
+    ViewData["Title"] = "UpdateAgent";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Temsilci Güncelleme</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    <tbody>
+                        <form method="post">
+                            <div class="container">
+                                <br /><br />
+
+                                <label>Temsilci Adı</label>
+                                <input type="hidden" asp-for="AgentId" />
+                                <input type="text" asp-for="AgentName" class="form-control" />
+                                <br />
+                                <label>Temsilci Soyadı</label>
+                                <input type="text" asp-for="AgentSurname" class="form-control" />
+                                <br />
+                                <label>Temsilci Açıklama</label>
+                                <input type="text" asp-for="Description" class="form-control" />
+                                <br />
+                                <label>Görsel</label>
+                                <input type="text" asp-for="ImageUrl" class="form-control" />
+                                <br />
+                                <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+                                <br /><br />
+                            </div>
+                        </form>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

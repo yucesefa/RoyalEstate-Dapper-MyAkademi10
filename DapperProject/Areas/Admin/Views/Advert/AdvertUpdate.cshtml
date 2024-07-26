@@ -1,0 +1,103 @@
+﻿@model DapperProject.Dtos.AdvertDtos.GetByIdAdvertDto
+@{
+    ViewData["Title"] = "AdvertUpdate";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">İlan Ekle</h4>
+            <form class="forms-sample" method="post">
+                <div class="form-group">
+                    <label for="PropertyTitle">Başlık</label>
+                    <input type="text" class="form-control" asp-for="Title" required maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="PropertyDescription">Açıklama</label>
+                    <textarea asp-for="Description" id="editor" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="PropertyEmbed">Video Embed Link</label>
+                    <input type="text" class="form-control" asp-for="VideoEmbed" required>
+                </div>
+                <div class="form-group">
+                    <label for="PropertyPrice">Fiyat</label>
+                    <input type="number" class="form-control" asp-for="Price" required minlength="4" maxlength="10">
+                </div>
+
+                <div class="form-group">
+                    <label for="PropertySliderImage"> Resim Link</label>
+                    <input type="text" class="form-control" asp-for="ImageId">
+                </div>
+
+                <div class="form-group">
+                    <label for="PropertySliderImage"> İlan Durumu</label>
+                    <input type="text" class="form-control" asp-for="AdvertStatus">
+                </div>
+
+                <div class="form-group">
+                    <label for="PropertySliderImage">Oda Sayısı</label>
+                    <input type="text" class="form-control" asp-for="RoomCount">
+                </div>
+
+                <div class="form-group">
+                    <label for="PropertySliderImage"> Banyo Sayısı</label>
+                    <input type="text" class="form-control" asp-for="BathroomCount">
+                </div>
+
+                <div class="form-group">
+                    <label for="PropertySliderImage"> Metre Kare</label>
+                    <input type="text" class="form-control" asp-for="M2">
+                </div>
+
+                <div class="form-group">
+                    <label for="AgentId">İlgilenecek Olan Emlak Danışanı</label>
+                    <select class="form-control" asp-for="AgentId" required>
+                        <option selected disabled>Seçiniz</option>
+                        @foreach (var item in ViewBag.AgentList)
+                        {
+                            <option value="@item.AgentId">@item.AgentName @item.AgentSurname</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="CategoryId">Kategori</label>
+                    <select class="form-control" asp-for="CategoryId" id="CategoryId" required>
+                        <option selected disabled>Seçiniz</option>
+                        @foreach (var item in ViewBag.CategoryList)
+                        {
+                            <option value="@item.CategoryId">@item.CategoryName</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="LocationId">Lokasyon</label>
+                    <select class="form-control" asp-for="LocationId" required>
+                        <option selected disabled>Seçiniz</option>
+                        @foreach (var item in ViewBag.LocationList)
+                        {
+                            <option value="@item.LocationId">@item.LocationName</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="LocationId">Etiket</label>
+                    <select class="form-control" asp-for="TagId" required>
+                        <option selected disabled>Seçiniz</option>
+                        @foreach (var item in ViewBag.TagList)
+                        {
+                            <option value="@item.TagId">@item.TagName</option>
+                        }
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Ekle</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+<script>
+        CKEDITOR.replace( 'editor' );
+</script>

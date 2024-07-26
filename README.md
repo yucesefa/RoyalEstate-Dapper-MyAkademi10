@@ -1,6 +1,6 @@
 # DapperProject
 Bu projede Dapper ORM kullanılarak, ASP.NET Core MVC ve MsSQL ile bir emlak sitesi oluşturulmuştur. İlanları listeleme, detayları görme, admin panelinde CRUD işlemleri yapma gibi özellikler sunar. Kaggle’dan çekilen Real Estate veri seti ile dashboard paneli oluşturulmuş, verilerle ilgili istatistikler ve arama imkanı sağlanmıştır. Proje, sayfalama ve dinamik parametrelerle çalışma gibi ileri seviye özellikler içerir.
-#Kulanılan Teknolojiler ve Yaklaşımlar
+# Kulanılan Teknolojiler ve Yaklaşımlar
 * Asp .Net Core Mvc
 * Dapper
 * MsSql
